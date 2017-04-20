@@ -9,4 +9,4 @@ setup(name='adyen',
       long_description=open('README.md').read(),
       packages=['adyen', 'django_adyen', 'django_adyen.templatetags',
                 'oscar_adyen'],
-      install_requires=['pytz', 'zope.dottedname'])
+      install_requires=['pytz', 'zope.dottedname', 'six'])

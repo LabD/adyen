@@ -35,7 +35,7 @@ PAYMENT_METHOD_NAMES = {
 }
 
 
-class PaymentFailed(StandardError):
+class PaymentFailed(Exception):
     pass
 
 
@@ -45,8 +45,8 @@ create_payment = django_adyen_api.create_payment
 def pay(payment, basket_id, build_absolute_uri=None, force_multi=False):
     if not payment.res_url:
         if not build_absolute_uri:
-            raise StandardError("Pass build_absolute_uri if you don't set "
-                                "res_url on the payment yourself.")
+            raise Exception("Pass build_absolute_uri if you don't set "
+                            "res_url on the payment yourself.")
 
         payment.res_url = build_absolute_uri(
             reverse('oscar-adyen:payment-result',

@@ -8,10 +8,10 @@ import gzip
 import hashlib
 import hmac
 import logging
-import StringIO
+from six import StringIO
 import sys
-from urllib import urlencode
-from urlparse import urlparse, parse_qs
+from six.moves.urllib.parse import urlencode
+from six.moves.urllib.parse import urlparse, parse_qs
 
 import pytz
 
@@ -23,7 +23,7 @@ if sys.version_info[0] >= 3:
     unicode = str
 
 
-class UnknownSkinCode(StandardError):
+class UnknownSkinCode(Exception):
     pass
 
 

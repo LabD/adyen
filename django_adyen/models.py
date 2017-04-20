@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 import json
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 
 class PaymentManager(models.Manager):
@@ -41,6 +42,7 @@ class PaymentManager(models.Manager):
         return payment
 
 
+@python_2_unicode_compatible
 class Payment(models.Model):
     """
     All information that goes in a payment session according to section 2.2 of
@@ -119,6 +121,7 @@ class ResultManager(models.Manager):
             merchant_return_data=hosted_payment_result.merchant_return_data)
 
 
+@python_2_unicode_compatible
 class Result(models.Model):
     """
     All information that is returned to the application by the final redirect
@@ -176,6 +179,7 @@ class NotificationManager(models.Manager):
         return self.get_queryset().filter(original__isnull=True)
 
 
+@python_2_unicode_compatible
 class Notification(models.Model):
     """
     All received notifications from Adyen are stored in the database.
@@ -227,7 +231,7 @@ class Notification(models.Model):
     class Meta:
         app_label = 'django_adyen'
 
-    def __unicode__(self):
+    def __str__(self):
         return "{event_code} {psp_reference}".format(**self.__dict__)
 
     @property
