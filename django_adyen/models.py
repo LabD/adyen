@@ -100,7 +100,9 @@ class Payment(models.Model):
         app_label = 'django_adyen'
 
     def __str__(self):
-        return "Payment {merchant_reference} {payment_amount}".format(**self.__dict__)
+        return "Payment {merchant_reference} {payment_amount}".format(
+            **self.__dict__)
+
 
 class ResultManager(models.Manager):
     def persist(self, hosted_payment_result):
@@ -154,7 +156,8 @@ class Result(models.Model):
         app_label = 'django_adyen'
 
     def __str__(self):
-        return "Result {merchant_reference} {auth_result}".format(**self.__dict__)
+        return "Result {merchant_reference} {auth_result}".format(
+            **self.__dict__)
 
 
 class NotificationManager(models.Manager):
